@@ -3,11 +3,36 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET /                           @controllers.HomeController.index
 # An example controller showing how to use dependency injection
-GET     /count                      controllers.CountController.count
+GET /count                      @controllers.CountController.count
 # An example controller showing how to write asynchronous code
-GET     /message                    controllers.AsyncController.message
+GET /message                    @controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET /assets/*file               @controllers.Assets.versioned(path="/public", file: Asset)
+
+GET /login   @controllers.CustomLoginController.login
+GET /logout  @controllers.CustomLoginController.logout
+
+# Registration routes
+GET  /signup             @controllers.CustomRegistrationController.startSignUp
+POST /signup             @controllers.CustomRegistrationController.handleStartSignUp
+GET  /signup/:mailToken  @controllers.CustomRegistrationController.signUp(mailToken)
+POST /signup/:mailToken  @controllers.CustomRegistrationController.handleSignUp(mailToken)
+
+# Reset password
+GET  /reset             @controllers.CustomPasswordResetController.startResetPassword
+POST /reset             @controllers.CustomPasswordResetController.handleStartResetPassword
+GET  /reset/:mailToken  @controllers.CustomPasswordResetController.resetPassword(mailToken)
+POST /reset/:mailToken  @controllers.CustomPasswordResetController.handleResetPassword(mailToken)
+
+# Change Password
+GET  /password  @controllers.CustomPasswordChangeController.page
+POST /password  @controllers.CustomPasswordChangeController.handlePasswordChange
+
+# Authentication entry points for all providers
+GET   /authenticate/:provider      @controllers.CustomProviderController.authenticate(provider, redirectTo: Option[String])
+POST  /authenticate/:provider      @controllers.CustomProviderController.authenticateByPost(provider, redirectTo: Option[String])
+#POST /api/authenticate/:provider  @controllers.CustomLoginApiController.authenticate(provider, builder = "token")
+#GET  /assets/*file                controllers.Assets.at(path = "/public/securesocial", file)

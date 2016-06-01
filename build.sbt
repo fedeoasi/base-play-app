@@ -6,10 +6,18 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.11.7"
 
+lazy val securesocial = "ws.securesocial" %% "securesocial" % "3.0-M4"
+
+lazy val webJarsBootstrap = "org.webjars" % "bootstrap" % "3.1.1-2"
+
+
 libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
+  filters,
+  securesocial,
+  webJarsBootstrap,
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 

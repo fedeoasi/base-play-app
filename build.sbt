@@ -10,7 +10,6 @@ lazy val securesocial = "ws.securesocial" %% "securesocial" % "3.0-M4"
 
 lazy val webJarsBootstrap = "org.webjars" % "bootstrap" % "3.1.1-2"
 
-
 libraryDependencies ++= Seq(
   jdbc,
   cache,
@@ -22,3 +21,8 @@ libraryDependencies ++= Seq(
 )
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
+
+includeFilter in (Assets, LessKeys.less) := "*.less"
+excludeFilter in (Assets, LessKeys.less) := "_*.less"
+LessKeys.compress := false
+LessKeys.verbose := true

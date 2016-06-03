@@ -10,6 +10,13 @@ lazy val securesocial = "ws.securesocial" %% "securesocial" % "3.0-M4"
 
 lazy val webJarsBootstrap = "org.webjars" % "bootstrap" % "3.1.1-2"
 
+lazy val slick = "com.typesafe.slick" %% "slick" % "2.1.0"
+lazy val sqlite = "org.xerial" % "sqlite-jdbc" % "3.8.7"
+lazy val jodaMapper = "com.github.tototoshi" %% "slick-joda-mapper" % "1.2.0"
+lazy val h2 = "com.h2database" % "h2" % "1.4.185"
+lazy val flyway = "org.flywaydb" % "flyway-core" % "3.2.1"
+lazy val dbDependencies = Seq(slick, sqlite, jodaMapper, flyway)
+
 libraryDependencies ++= Seq(
   jdbc,
   cache,
@@ -18,7 +25,7 @@ libraryDependencies ++= Seq(
   securesocial,
   webJarsBootstrap,
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
-)
+) ++ dbDependencies
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 

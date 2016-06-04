@@ -5,16 +5,26 @@ import securesocial.core.providers.MailToken
 import securesocial.core.{AuthenticationMethod, BasicProfile, PasswordInfo}
 
 import scala.slick.driver.SQLiteDriver.simple._
-import scala.slick.jdbc.meta.MTable
 
-abstract class AuthPersistenceService {
+trait AuthPersistenceService {
+  def findUserByUserId(userId: String): Option[BasicProfile]
+  def findUserByEmail(email: String): Option[BasicProfile]
+  def saveUser(p: BasicProfile): UserDao
+  def saveToken(t: MailToken): MailToken
+  def findToken(uuid: String): Option[MailToken]
+  def deleteToken(uuid: String): Option[MailToken]
+  def passwordInfoFor(p: BasicProfile): Option[PasswordInfo]
+  def updatePasswordInfo(p: BasicProfile, info: PasswordInfo): Option[BasicProfile]
+}
+
+abstract class BaseAuthPersistenceService extends AuthPersistenceService {
   val database: Database
   val dal: AuthDal
 
   import dal._
   import driver.simple._
 
-  val logger = Logger.apply(classOf[AuthPersistenceService])
+  val logger = Logger.apply(classOf[BaseAuthPersistenceService])
 
   def findUserByUserId(userId: String): Option[BasicProfile] = {
     database.withSession { implicit s =>
@@ -28,7 +38,7 @@ abstract class AuthPersistenceService {
     }
   }
 
-  def basicProfile(d: UserDao): BasicProfile = {
+  private def basicProfile(d: UserDao): BasicProfile = {
     val passInfo = d.hasher.map { h =>
       PasswordInfo(h, d.password.get, d.salt)
     }

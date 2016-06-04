@@ -8,7 +8,7 @@ import securesocial.core.{BasicProfile, PasswordInfo}
 
 import scala.concurrent.Future
 
-class MyUserService(aps: AuthPersistenceService) extends UserService[User] {
+class UserServiceImpl(aps: AuthPersistenceService) extends UserService[User] {
   val logger = Logger(this.getClass)
 
   override def find(providerId: String, userId: String): Future[Option[BasicProfile]] = Future.successful {
@@ -41,7 +41,7 @@ class MyUserService(aps: AuthPersistenceService) extends UserService[User] {
   }
 
   override def deleteExpiredTokens(): Unit = {
-    throw new NotImplementedError("Linking profiles is not yet supported")
+    throw new NotImplementedError("Deleting expired tokens is not yet supported")
   }
 
   override def updatePasswordInfo(user: User, info: PasswordInfo): Future[Option[BasicProfile]] = Future.successful {

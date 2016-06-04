@@ -81,7 +81,7 @@ class AuthPersistenceServiceSpec extends FunSpec with Matchers {
     }
   }
   
-  private def buildPersistenceService(): AuthPersistenceService = {
+  private def buildPersistenceService(): BaseAuthPersistenceService = {
     new TestAuthPersistenceService()
   }
 }

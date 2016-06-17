@@ -26,11 +26,6 @@ class Module extends AbstractModule {
 
     bind(classOf[Database]).toInstance(database)
     bind(classOf[AuthPersistenceService]).toInstance(new AuthPersistenceServiceImpl(database))
-    // Use the system clock as the default implementation of Clock
-    bind(classOf[Clock]).toInstance(Clock.systemDefaultZone)
-    // Ask Guice to create an instance of ApplicationTimer when the
-    // application starts.
-    bind(classOf[ApplicationTimer]).asEagerSingleton()
   }
 
 }

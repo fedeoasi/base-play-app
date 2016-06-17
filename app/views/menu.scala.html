@@ -1,0 +1,32 @@
+@()
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <div id="navbar-collapse-1" class="collapse navbar-collapse">
+            <ul id="menu" class="nav navbar-nav">
+                <li><a href="/link-here">First</a></li>
+                <li><a href="/another-link-here">Second</a></li>
+                <li>
+                    <a id="dLabel" data-toggle="dropdown" class="actionLink">Admin</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/link-here">First</a></li>
+                        <li><a href="/link-here">Second</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="clear"></div>
+            <ul id="logout" class="nav navbar-nav navbar-right">
+                <li><a href="@routes.CustomLoginController.logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

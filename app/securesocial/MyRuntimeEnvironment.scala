@@ -14,7 +14,6 @@ class MyRuntimeEnvironment @Inject() (authService: AuthPersistenceService) exten
   override type U = User
   override implicit val executionContext = play.api.libs.concurrent.Execution.defaultContext
   override lazy val userService: UserService[User] = new UserServiceImpl(authService)
-  override lazy val eventListeners = List(new SecureSocialEventListener())
   override lazy val providers: ListMap[String, IdentityProvider] = ListMap(
     include(new UsernamePasswordProvider[User](userService, avatarService, viewTemplates, passwordHashers))
   )

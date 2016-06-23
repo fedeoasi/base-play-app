@@ -8,11 +8,9 @@ logging, configuration, testing, and styling.
 Usage
 =====
 
-To run the app use ```./activator run```. 
-
-To run tests use ```./activator test```
-
-To create a runnable archive use `./activator dist`.
+To run the app use `./activator run`. To test use 
+`./activator test`. To create a runnable archive use 
+`./activator dist`.
 
 Configuration
 =============
@@ -46,7 +44,7 @@ Styling
 =======
 We are using [twitter bootstrap](http://getbootstrap.com/) and a theme
 downloaded from [bootswatch](http://bootswatch.com/). Bootstrap is a 
-dependency in ```build.sbt``` and is provided by webjars.
+dependency in `build.sbt` and is provided by webjars.
 
 The bootswatch file was downloaded directly from the bootswatch website
 and placed in the `app/assets/stylesheets` directory, where it gets 

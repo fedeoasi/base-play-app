@@ -1,5 +1,5 @@
-# base-play-app 
-===============
+base-play-app 
+=============
 
 A simple play application be used as a template, providing some 
 standards for persistence, dependency injection, authentication, 

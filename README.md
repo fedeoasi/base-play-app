@@ -1,29 +1,53 @@
 # base-play-app 
-=================================
+===============
 
-A basic app to be used as a template.
+A simple play application be used as a template, providing some 
+standards for persistence, dependency injection, authentication, 
+logging, configuration, testing, and styling. 
 
-This file will be packaged with your application when using `activator dist`.
+Usage
+=====
 
-There are several demonstration files available in this template.
+To run the app use ```./activator run```. 
 
-Controllers
+To run tests use ```./activator test```
+
+To create a runnable archive use `./activator dist`.
+
+Configuration
+=============
+
+Persistence
 ===========
+Coming soon... 
 
-- HomeController.scala:
+Dependency Injection
+====================
+Coming soon...
 
-  Shows how to handle simple HTTP requests.
+Authentication
+==============
+We are using the [securesocial](http://securesocial.ws/) play plugin 
+as authentication library. This was wired up to the database via slick 
+(see `UserServiceImpl` and `AuthPersistenceService` for more detail).
 
-Components
-==========
+Securesocial exposes many configuration keys through the standard 
+typesafe config mechanism. The `securesocial.conf` contains the 
+configuration specific to securesocial.
 
-- Module.scala:
+Logging
+=======
+Coming soon...
 
-  Shows how to use Guice to bind all the components needed by your application.
-
-filters.Filters
+Testing
 =======
 
-- filters.Filters.scala:
+Styling
+=======
+We are using [twitter bootstrap](http://getbootstrap.com/) and a theme
+downloaded from [bootswatch](http://bootswatch.com/). Bootstrap is a 
+dependency in ```build.sbt``` and is provided by webjars.
 
-  Creates the list of HTTP filters used by your application.
+The bootswatch file was downloaded directly from the bootswatch website
+and placed in the `app/assets/stylesheets` directory, where it gets 
+compiled by the play `less` plugin.

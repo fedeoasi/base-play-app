@@ -47,6 +47,7 @@ it were a Scala collection issuing both typesafe queries (preferred)
 and plain SQL.
 
 The persistence layer is structured as follow:
+
 1. A database component (e.g., `AuthDbComponenet`) contains the table model
 2. A data access layer (e.g., `AuthDal`) takes a JdbcDriver as input and
   gives access to the table model

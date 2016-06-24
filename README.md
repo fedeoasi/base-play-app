@@ -8,9 +8,15 @@ testing, and styling.
 Usage
 =====
 
-To run the app use `./activator run`. To test use 
-`./activator test`. To create a runnable archive use 
-`./activator dist`.
+The initial skeleton for the project was generated using 
+[activator](https://www.lightbend.com/activator/download).
+Invoking the `activator` script, you can execute any SBT command as
+you would in SBT. 
+
+Useful commands:
+- `run`: Runs the application and listens on `localhost:9000`
+- `test`: Runs the tests
+- `dist`: Creates a runnable archive (to be used in prod)
 
 Configuration
 =============
@@ -29,9 +35,10 @@ The override configuration files are respectively `application.dev.conf`,
 
 Persistence
 ===========
-Slick is used in the persistence layer. While there is a play plugin to
-quickly configure the database, I did a little more work to setup slick
-and I get more control in return. I can test my persistence code without 
+[Slick](http://slick.lightbend.com/) is used in the persistence layer. 
+While there is a play plugin to
+quickly configure the database, a bit more work was done to setup slick
+to get more control. I can test my persistence code without 
 requiring any play object, which means I can use the persistence code 
 in projects that do not use play.
 
@@ -58,7 +65,9 @@ On the testing side with H2, the tables are generated directly from
 the model every time the database is created.
 
 On the production side with SQLite,  the `conf/db/migration` contains
-the database migration (evolution) scripts.
+the database migration (evolution) scripts. There is a `SqliteDdlPrinter`
+class that prints the ddl that generates the model tables. It can be 
+invoked using `./activator "runMain persistence.SqliteDdlPrinter"`.
 
 Dependency Injection
 ====================

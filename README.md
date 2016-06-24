@@ -46,7 +46,7 @@ Slick provides a DSL that allows to interact with the database as if
 it were a Scala collection issuing both typesafe queries (preferred)
 and plain SQL.
 
-The persistence layer is structured as follow:
+The persistence layer is structured as follows:
 
 1. A database component (e.g., `AuthDbComponenet`) contains the table model
 2. A data access layer (e.g., `AuthDal`) takes a JdbcDriver as input and
@@ -72,7 +72,8 @@ invoked using `./activator "runMain persistence.SqliteDdlPrinter"`.
 
 Dependency Injection
 ====================
-Coming soon...
+The guice module `Module` contains the application bindings. 
+This module is loaded on application startup.
 
 Authentication
 ==============
@@ -86,7 +87,11 @@ configuration specific to securesocial.
 
 Logging
 =======
-Coming soon...
+The logging configuration can be found in `conf/logback.xml`.
+ 
+There is a filter called `LoggingFilter` that logs information about
+the current HTTP request. Requests containing `/assets` and `/status` in
+the URL are not logged.
 
 Testing
 =======

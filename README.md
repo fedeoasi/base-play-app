@@ -2,8 +2,8 @@ base-play-app
 =============
 
 A simple play application be used as a template, providing some 
-standards for persistence, injecting dependencies, authentication, 
-logging, configuration, testing, and styling. 
+standards for persistence, authentication, logging, configuration, 
+testing, and styling. 
 
 Usage
 =====
@@ -14,10 +14,11 @@ To run the app use `./activator run`. To test use
 
 Configuration
 =============
-Configuration in play is based on the typesafe config library. On startup,
-the application scan the classpath looking for the `application.conf` 
-file, and there is a fallback mechanism that is explained the in config 
-library documentation.
+Configuration in play is based on the 
+[typesafe config](https://github.com/typesafehub/config) library. 
+On startup, the application scans the classpath looking for the 
+`application.conf` file, and there is a fallback mechanism that is 
+explained the in config library documentation.
 
 This template adds a custom application loader which allows to look for
 an override file depending on the applcation mode (think of it as an 
@@ -28,14 +29,36 @@ The override configuration files are respectively `application.dev.conf`,
 
 Persistence
 ===========
-Slick is used on the persistence layer. While there is a play plugin to
+Slick is used in the persistence layer. While there is a play plugin to
 quickly configure the database, I did a little more work to setup slick
 and I get more control in return. I can test my persistence code without 
 requiring any play object, which means I can use the persistence code 
 in projects that do not use play.
 
 Slick provides a DSL that allows to interact with the database as if
-it were a Scala collection. The queries are typesafe, 
+it were a Scala collection issuing both typesafe queries (preferred)
+and plain SQL.
+
+The persistence layer is structured as follow:
+1. A database component (e.g., `AuthDbComponenet`) contains the table model
+2. A data access layer (e.g., `AuthDal`) takes a JdbcDriver as input and
+  gives access to the table model
+3. A persistence service (e.g., `AuthPersistenceServiceImpl`) takes a
+database as input and exposes persistence level methods to the application 
+and uses a specific `Dal`
+4. A database is a slick wrapper around a specific JDBC database object.
+
+The template contains two databases, SQLite for production and H2 for 
+testing.
+
+## Database migrations
+
+The library used for database migrations is flyway. 
+On the testing side with H2, the tables are generated directly from 
+the model every time the database is created.
+
+On the production side with SQLite,  the `conf/db/migration` contains
+the database migration (evolution) scripts.
 
 Dependency Injection
 ====================

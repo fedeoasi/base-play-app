@@ -8,12 +8,9 @@ testing, and styling.
 Usage
 =====
 
-The initial skeleton for the project was generated using 
-[activator](https://www.lightbend.com/activator/download).
-Invoking the `activator` script, you can execute any SBT command as
-you would in SBT. 
-
-Useful commands:
+The play application is structured as an [SBT](https://www.scala-sbt.org/)
+project. When SBT is installed, you can run `sbt` to open a
+shell and then use the following commands:
 - `run`: Runs the application and listens on `localhost:9000`
 - `test`: Runs the tests
 - `dist`: Creates a runnable archive (to be used in prod)

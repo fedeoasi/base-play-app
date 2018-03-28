@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
   filters,
   securesocial,
   webJarsBootstrap,
-  "org.scalatestplus" %% "play" % "1.4.0" % Test
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 ) ++ dbDependencies
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"

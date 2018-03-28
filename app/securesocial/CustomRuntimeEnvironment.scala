@@ -8,9 +8,10 @@ import securesocial.core.services.UserService
 import securesocial.core.{IdentityProvider, RuntimeEnvironment}
 
 import scala.collection.immutable.ListMap
+import play.api._
 
 @Singleton
-class MyRuntimeEnvironment @Inject() (authService: AuthPersistenceService) extends RuntimeEnvironment.Default {
+class CustomRuntimeEnvironment @Inject() (val configuration: Configuration, val messagesApi: i18n.MessagesApi, authService: AuthPersistenceService) extends RuntimeEnvironment.Default {
   override type U = User
   override implicit val executionContext = play.api.libs.concurrent.Execution.defaultContext
   override lazy val userService: UserService[User] = new UserServiceImpl(authService)

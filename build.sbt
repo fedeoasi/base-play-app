@@ -6,7 +6,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.11.7"
 
-lazy val securesocial = "ws.securesocial" %% "securesocial" % "3.0-M4"
+lazy val securesocial = "ws.securesocial" %% "securesocial" % "3.0-M6"
 
 lazy val webJarsBootstrap = "org.webjars" % "bootstrap" % "3.1.1-2"
 

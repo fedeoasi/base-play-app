@@ -1,5 +1,6 @@
 package filters
 
+import akka.stream.Materializer
 import com.google.inject.Inject
 import org.slf4j.LoggerFactory
 import play.api.mvc.{Filter, RequestHeader, Result}
@@ -7,7 +8,7 @@ import play.api.mvc.{Filter, RequestHeader, Result}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class LoggingFilter @Inject() extends Filter {
+class LoggingFilter @Inject() (implicit val mat: Materializer) extends Filter {
   private val logger = LoggerFactory.getLogger("request")
   private val loggingBlackList = Seq("/assets", "/status")
 

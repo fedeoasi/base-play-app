@@ -2,11 +2,11 @@ package controllers
 
 import javax.inject._
 
-import securesocial.MyRuntimeEnvironment
+import securesocial.CustomRuntimeEnvironment
 import securesocial.core.SecureSocial
 
 @Singleton
-class HomeController @Inject() (override implicit val env: MyRuntimeEnvironment)
+class HomeController @Inject() (override implicit val env: CustomRuntimeEnvironment)
   extends SecureSocial {
 
   def index = SecuredAction {

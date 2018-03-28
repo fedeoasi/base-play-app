@@ -13,7 +13,7 @@ project. When SBT is installed, you can run `sbt` to open a
 shell and then use the following commands:
 - `run`: Runs the application and listens on `localhost:9000`
 - `test`: Runs the tests
-- `dist`: Creates a runnable archive (to be used in prod)
+- `dist`: Creates a runnable archive (which can be used in prod)
 
 Configuration
 =============
